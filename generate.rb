@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
-# Distribution:
-# 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-steps = 20
+distribution = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 base_prompt = 'base prompt'
 list_of_prompts = [
   'prompt'
@@ -14,7 +12,7 @@ def loop_through_steps(base_prompt, start_prompt, end_prompt, steps)
 end
 
 prompts = list_of_prompts.each_cons(2).flat_map do |start_prompt, end_prompt|
-  loop_through_steps(base_prompt, start_prompt, end_prompt, steps)
+  loop_through_steps(base_prompt, start_prompt, end_prompt, distribution.length)
 end
 
 File.write('prompts.txt', prompts.join("\n"))
